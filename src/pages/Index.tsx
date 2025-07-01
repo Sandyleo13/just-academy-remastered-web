@@ -1,8 +1,7 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, Clock, Users, Award, CheckCircle, Play, BookOpen, Code, Smartphone } from "lucide-react";
+import { Star, Clock, Users, Award, CheckCircle, Play, BookOpen, Code, Smartphone, MapPin, Calendar, GraduationCap } from "lucide-react";
 
 const Index = () => {
   const curriculum = [
@@ -61,6 +60,75 @@ const Index = () => {
     }
   ];
 
+  const courseOfferings = [
+    {
+      title: "iOS Training in Pune",
+      location: "Pune",
+      duration: "3-4 Months",
+      mode: "Classroom & Online",
+      description: "Complete iOS development training with Swift programming",
+      highlights: [
+        "Swift Programming Language",
+        "Xcode Development Environment", 
+        "UI/UX Design Principles",
+        "App Store Deployment",
+        "Live Project Work",
+        "100% Job Assistance"
+      ],
+      features: [
+        "Expert Trainers with 8+ Years Experience",
+        "Small Batch Size (Max 15 Students)",
+        "Flexible Timings - Weekend & Weekday Batches",
+        "Industry-Relevant Curriculum",
+        "Hands-on Practice Sessions"
+      ]
+    },
+    {
+      title: "iOS Training in Bangalore",
+      location: "Bangalore", 
+      duration: "3-4 Months",
+      mode: "Classroom & Online",
+      description: "Comprehensive iOS app development course in India's Silicon Valley",
+      highlights: [
+        "Advanced Swift Concepts",
+        "Core Data & CloudKit",
+        "iOS Frameworks Integration",
+        "Performance Optimization",
+        "Real-time App Development",
+        "Interview Preparation"
+      ],
+      features: [
+        "Industry Expert Mentors",
+        "State-of-the-art Infrastructure", 
+        "Mock Interviews & Resume Building",
+        "Placement Support",
+        "24/7 Lab Access"
+      ]
+    },
+    {
+      title: "iOS Training in Hyderabad",
+      location: "Hyderabad",
+      duration: "3-4 Months", 
+      mode: "Classroom & Online",
+      description: "Master iOS development with practical training approach",
+      highlights: [
+        "Foundation to Advanced Level",
+        "ARKit & Machine Learning",
+        "App Security & Testing",
+        "Version Control with Git",
+        "Agile Development Practices",
+        "Portfolio Development"
+      ],
+      features: [
+        "Certified iOS Developers as Trainers",
+        "Individual Attention to Each Student",
+        "Regular Assessments & Feedback",
+        "Industry Networking Events",
+        "Lifetime Course Access"
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
       {/* Header */}
@@ -78,7 +146,7 @@ const Index = () => {
             <a href="#course" className="text-gray-700 hover:text-blue-600 transition-colors">Course</a>
             <a href="#curriculum" className="text-gray-700 hover:text-blue-600 transition-colors">Curriculum</a>
             <a href="#testimonials" className="text-gray-700 hover:text-blue-600 transition-colors">Reviews</a>
-            <a href="#pricing" className="text-gray-700 hover:text-blue-600 transition-colors">Pricing</a>
+            <a href="#locations" className="text-gray-700 hover:text-blue-600 transition-colors">Locations</a>
           </nav>
           <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
             Enroll Now
@@ -233,82 +301,97 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-20 px-4 bg-white">
+      {/* Course Locations Section */}
+      <section id="locations" className="py-20 px-4 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-gray-800">Choose Your Plan</h2>
-            <p className="text-xl text-gray-600">Flexible pricing options to fit your needs</p>
+            <h2 className="text-4xl font-bold mb-4 text-gray-800">iOS Training Locations</h2>
+            <p className="text-xl text-gray-600">Choose your preferred training location and mode</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Card className="hover:shadow-lg transition-shadow duration-300 border-blue-100">
-              <CardHeader className="text-center">
-                <CardTitle className="text-2xl text-gray-800">Basic</CardTitle>
-                <div className="text-4xl font-bold text-blue-600 my-4">$199</div>
-                <CardDescription>Perfect for beginners</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  {["12 weeks of content", "Video tutorials", "Basic support", "Certificate"].map((feature, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-gray-600">{feature}</span>
-                    </div>
-                  ))}
+          <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {courseOfferings.map((course, index) => (
+              <Card key={index} className="hover:shadow-xl transition-all duration-300 border-blue-100 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-bl-full flex items-start justify-end p-2">
+                  <Badge className="bg-white text-blue-600 text-xs px-1 py-0">
+                    {course.mode}
+                  </Badge>
                 </div>
-                <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
-                  Get Started
+                
+                <CardHeader className="pb-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <MapPin className="w-5 h-5 text-blue-600" />
+                    <span className="text-blue-600 font-semibold">{course.location}</span>
+                  </div>
+                  <CardTitle className="text-2xl text-gray-800 mb-2">{course.title}</CardTitle>
+                  <div className="flex items-center gap-4 text-sm text-gray-600">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-4 h-4" />
+                      <span>{course.duration}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <GraduationCap className="w-4 h-4" />
+                      <span>Certificate</span>
+                    </div>
+                  </div>
+                  <CardDescription className="text-gray-700 mt-2">
+                    {course.description}
+                  </CardDescription>
+                </CardHeader>
+                
+                <CardContent className="space-y-6">
+                  <div>
+                    <h4 className="font-semibold text-gray-800 mb-3">Course Highlights</h4>
+                    <div className="space-y-2">
+                      {course.highlights.map((highlight, i) => (
+                        <div key={i} className="flex items-center gap-2">
+                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                          <span className="text-gray-600 text-sm">{highlight}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-800 mb-3">Training Features</h4>
+                    <div className="space-y-2">
+                      {course.features.map((feature, i) => (
+                        <div key={i} className="flex items-start gap-2">
+                          <Star className="w-4 h-4 text-yellow-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-600 text-sm">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="pt-4">
+                    <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+                      Enroll in {course.location}
+                    </Button>
+                    <p className="text-center text-sm text-gray-500 mt-2">
+                      Call for batch timings & fees
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8 max-w-4xl mx-auto">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Can't find your city?</h3>
+              <p className="text-gray-600 mb-6">
+                We also offer online iOS training with live instructor-led sessions. Join from anywhere in India!
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+                  Explore Online Training
                 </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow duration-300 border-blue-500 relative scale-105">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <Badge className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-1">
-                  Most Popular
-                </Badge>
+                <Button variant="outline" size="lg" className="border-blue-200 text-blue-600 hover:bg-blue-50">
+                  Contact for New Location
+                </Button>
               </div>
-              <CardHeader className="text-center">
-                <CardTitle className="text-2xl text-gray-800">Professional</CardTitle>
-                <div className="text-4xl font-bold text-blue-600 my-4">$399</div>
-                <CardDescription>Best for serious learners</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  {["Everything in Basic", "1-on-1 mentoring", "Project reviews", "Job placement help", "Lifetime access"].map((feature, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-gray-600">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
-                  Get Started
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow duration-300 border-blue-100">
-              <CardHeader className="text-center">
-                <CardTitle className="text-2xl text-gray-800">Enterprise</CardTitle>
-                <div className="text-4xl font-bold text-blue-600 my-4">$699</div>
-                <CardDescription>For teams and companies</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  {["Everything in Professional", "Team dashboard", "Custom curriculum", "Priority support", "Bulk pricing"].map((feature, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-gray-600">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
-                  Contact Sales
-                </Button>
-              </CardContent>
-            </Card>
+            </div>
           </div>
         </div>
       </section>
