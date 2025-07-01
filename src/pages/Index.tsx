@@ -1,61 +1,75 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, Clock, Users, Award, CheckCircle, Play, BookOpen, Code, Smartphone, MapPin, Calendar, GraduationCap } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Star, Clock, Users, Award, CheckCircle, Play, BookOpen, Code, Smartphone, MapPin, Calendar, GraduationCap, Phone, Mail, User } from "lucide-react";
+import { useState } from "react";
 
 const Index = () => {
+  const [enrollmentForm, setEnrollmentForm] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    course: 'iOS Training',
+    location: '',
+    message: ''
+  });
+
+  const handleEnrollmentSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Enrollment form submitted:', enrollmentForm);
+    // Handle form submission
+  };
+
   const curriculum = [
     {
-      module: "Introduction to iOS Development",
-      duration: "Week 1-2",
-      topics: ["Xcode Setup", "Swift Fundamentals", "iOS Architecture", "Interface Builder"]
+      module: "iOS Fundamentals & Swift Programming",
+      duration: "Week 1-3",
+      topics: ["Introduction to iOS Development", "Xcode IDE & Interface Builder", "Swift Programming Language", "Variables, Constants & Data Types", "Control Flow & Functions", "Object-Oriented Programming in Swift"]
     },
     {
-      module: "Swift Programming",
-      duration: "Week 3-4", 
-      topics: ["Variables & Constants", "Functions", "Classes & Structures", "Protocols"]
-    },
-    {
-      module: "UIKit Framework",
-      duration: "Week 5-7",
-      topics: ["View Controllers", "Auto Layout", "Table Views", "Navigation"]
+      module: "UIKit & Interface Development",
+      duration: "Week 4-6", 
+      topics: ["UIKit Framework Basics", "View Controllers & Navigation", "Auto Layout & Constraints", "Table Views & Collection Views", "Custom UI Components", "Storyboards & Segues"]
     },
     {
       module: "Core Data & Networking",
-      duration: "Week 8-9",
-      topics: ["Data Persistence", "REST APIs", "JSON Parsing", "Core Data"]
+      duration: "Week 7-9",
+      topics: ["Core Data Framework", "Data Persistence & Storage", "REST API Integration", "JSON Parsing & Serialization", "URLSession & Network Calls", "Error Handling"]
     },
     {
-      module: "Advanced Topics",
+      module: "Advanced iOS Development",
       duration: "Week 10-12",
-      topics: ["Core Animation", "Push Notifications", "App Store Deployment", "Testing"]
+      topics: ["Core Animation & Graphics", "Push Notifications", "Location Services & MapKit", "Camera & Photo Library", "App Store Guidelines", "App Deployment & Distribution"]
     }
   ];
 
   const features = [
-    { icon: Code, title: "Hands-on Coding", description: "Build real iOS apps from scratch" },
-    { icon: Users, title: "Expert Instructors", description: "Learn from industry professionals" },
-    { icon: Award, title: "Certificate", description: "Get certified upon completion" },
-    { icon: Smartphone, title: "Latest iOS", description: "Learn the newest iOS technologies" }
+    { icon: Code, title: "100% Practical Training", description: "Hands-on coding with real iOS projects" },
+    { icon: Users, title: "Industry Expert Trainers", description: "8+ years experienced iOS developers" },
+    { icon: Award, title: "Certification & Job Support", description: "Course completion certificate with placement assistance" },
+    { icon: Smartphone, title: "Latest iOS Technologies", description: "iOS 17, Xcode 15, Swift 5.9" }
   ];
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "iOS Developer at Apple",
-      content: "This course transformed my career. The hands-on approach and expert guidance helped me land my dream job.",
+      name: "Priya Sharma",
+      role: "iOS Developer at TCS",
+      content: "JustAcademy's iOS course helped me transition from web development to mobile app development. The practical approach and job assistance were excellent.",
       rating: 5
     },
     {
-      name: "Mike Chen",
-      role: "Freelance App Developer", 
-      content: "Comprehensive curriculum covering everything from basics to advanced topics. Highly recommended!",
+      name: "Rahul Verma",
+      role: "Freelance iOS Developer", 
+      content: "The trainers are highly experienced and the curriculum covers everything from basics to advanced concepts. Highly recommended for beginners.",
       rating: 5
     },
     {
-      name: "Emily Rodriguez",
-      role: "Software Engineer",
-      content: "The instructors are amazing and the projects are industry-relevant. Worth every penny!",
+      name: "Anjali Patel",
+      role: "Mobile App Developer at Infosys",
+      content: "Great learning experience with small batch sizes and individual attention. The live projects helped me build a strong portfolio.",
       rating: 5
     }
   ];
@@ -64,67 +78,70 @@ const Index = () => {
     {
       title: "iOS Training in Pune",
       location: "Pune",
-      duration: "3-4 Months",
+      duration: "3 Months",
       mode: "Classroom & Online",
-      description: "Complete iOS development training with Swift programming",
+      fee: "₹35,000",
+      description: "Comprehensive iOS app development training with Swift programming in Pune",
       highlights: [
-        "Swift Programming Language",
-        "Xcode Development Environment", 
-        "UI/UX Design Principles",
+        "Swift 5.9 Programming Language",
+        "Xcode 15 Development Environment", 
+        "UIKit & SwiftUI Frameworks",
+        "Core Data & CloudKit",
         "App Store Deployment",
-        "Live Project Work",
-        "100% Job Assistance"
+        "5+ Live Projects"
       ],
       features: [
-        "Expert Trainers with 8+ Years Experience",
-        "Small Batch Size (Max 15 Students)",
-        "Flexible Timings - Weekend & Weekday Batches",
+        "Weekend & Weekday Batches Available",
+        "Small Batch Size (Max 12 Students)",
+        "100% Job Placement Assistance",
         "Industry-Relevant Curriculum",
-        "Hands-on Practice Sessions"
+        "Lifetime Course Material Access"
       ]
     },
     {
       title: "iOS Training in Bangalore",
       location: "Bangalore", 
-      duration: "3-4 Months",
+      duration: "3 Months",
       mode: "Classroom & Online",
-      description: "Comprehensive iOS app development course in India's Silicon Valley",
+      fee: "₹40,000",
+      description: "Advanced iOS development course in India's Silicon Valley with placement support",
       highlights: [
         "Advanced Swift Concepts",
-        "Core Data & CloudKit",
-        "iOS Frameworks Integration",
+        "SwiftUI & Combine Framework",
+        "Core ML & Machine Learning",
+        "ARKit & Augmented Reality",
         "Performance Optimization",
-        "Real-time App Development",
-        "Interview Preparation"
+        "Enterprise iOS Development"
       ],
       features: [
-        "Industry Expert Mentors",
-        "State-of-the-art Infrastructure", 
+        "Industry Expert Mentors from Apple/Google",
+        "State-of-the-art Lab Infrastructure", 
         "Mock Interviews & Resume Building",
-        "Placement Support",
+        "Direct Company Referrals",
         "24/7 Lab Access"
       ]
     },
     {
       title: "iOS Training in Hyderabad",
       location: "Hyderabad",
-      duration: "3-4 Months", 
+      duration: "3 Months", 
       mode: "Classroom & Online",
-      description: "Master iOS development with practical training approach",
+      fee: "₹32,000",
+      description: "Complete iOS app development training from beginner to advanced level",
       highlights: [
-        "Foundation to Advanced Level",
-        "ARKit & Machine Learning",
+        "Foundation to Advanced iOS",
         "App Security & Testing",
         "Version Control with Git",
         "Agile Development Practices",
-        "Portfolio Development"
+        "Portfolio Development",
+        "Interview Preparation"
       ],
       features: [
-        "Certified iOS Developers as Trainers",
-        "Individual Attention to Each Student",
+        "Flexible Timing Options",
+        "Individual Project Mentoring",
         "Regular Assessments & Feedback",
         "Industry Networking Events",
-        "Lifetime Course Access"
+        "Free Workshop Sessions"
       ]
     }
   ];
@@ -147,9 +164,11 @@ const Index = () => {
             <a href="#curriculum" className="text-gray-700 hover:text-blue-600 transition-colors">Curriculum</a>
             <a href="#testimonials" className="text-gray-700 hover:text-blue-600 transition-colors">Reviews</a>
             <a href="#locations" className="text-gray-700 hover:text-blue-600 transition-colors">Locations</a>
+            <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
           </nav>
           <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
-            Enroll Now
+            <Phone className="w-4 h-4 mr-2" />
+            Call Now
           </Button>
         </div>
       </header>
@@ -158,43 +177,117 @@ const Index = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto text-center">
           <Badge className="mb-6 bg-blue-100 text-blue-700 hover:bg-blue-100">
-            🚀 Most Popular Course
+            🏆 India's #1 iOS Training Institute
           </Badge>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
             Master iOS Development
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Build stunning iOS apps with Swift and Xcode. From beginner to professional in 12 weeks with our comprehensive hands-on course.
+          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+            Learn iOS app development with Swift programming language. Build professional iOS applications and get placed in top IT companies. 100% practical training with live projects.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-lg px-8 py-4">
               <Play className="w-5 h-5 mr-2" />
-              Start Learning Today
+              Start Free Demo Class
             </Button>
             <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-blue-200 text-blue-600 hover:bg-blue-50">
-              View Demo
+              <BookOpen className="w-5 h-5 mr-2" />
+              Download Syllabus
             </Button>
           </div>
 
           <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-600">
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4" />
-              <span>12 Weeks Duration</span>
+              <span>3 Months Duration</span>
             </div>
             <div className="flex items-center gap-2">
               <Users className="w-4 h-4" />
-              <span>5000+ Students</span>
+              <span>10,000+ Students Trained</span>
             </div>
             <div className="flex items-center gap-2">
               <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-              <span>4.9/5 Rating</span>
+              <span>4.8/5 Rating</span>
             </div>
             <div className="flex items-center gap-2">
               <Award className="w-4 h-4" />
-              <span>Certificate Included</span>
+              <span>100% Job Assistance</span>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Quick Enrollment Form */}
+      <section className="py-12 px-4 bg-gradient-to-r from-blue-600 to-indigo-600">
+        <div className="container mx-auto">
+          <Card className="max-w-4xl mx-auto">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl text-gray-800">Get Free Demo Class</CardTitle>
+              <CardDescription>Fill the form below to book your free iOS development demo class</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleEnrollmentSubmit} className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Full Name *</Label>
+                  <Input
+                    id="name"
+                    type="text"
+                    placeholder="Enter your full name"
+                    value={enrollmentForm.name}
+                    onChange={(e) => setEnrollmentForm({...enrollmentForm, name: e.target.value})}
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Phone Number *</Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    placeholder="Enter your phone number"
+                    value={enrollmentForm.phone}
+                    onChange={(e) => setEnrollmentForm({...enrollmentForm, phone: e.target.value})}
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email Address *</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email"
+                    value={enrollmentForm.email}
+                    onChange={(e) => setEnrollmentForm({...enrollmentForm, email: e.target.value})}
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="location">Preferred Location</Label>
+                  <Input
+                    id="location"
+                    type="text"
+                    placeholder="Pune, Bangalore, Hyderabad"
+                    value={enrollmentForm.location}
+                    onChange={(e) => setEnrollmentForm({...enrollmentForm, location: e.target.value})}
+                  />
+                </div>
+                <div className="md:col-span-2 space-y-2">
+                  <Label htmlFor="message">Message (Optional)</Label>
+                  <Textarea
+                    id="message"
+                    placeholder="Any specific questions or requirements?"
+                    value={enrollmentForm.message}
+                    onChange={(e) => setEnrollmentForm({...enrollmentForm, message: e.target.value})}
+                  />
+                </div>
+                <div className="md:col-span-2">
+                  <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+                    Book Free Demo Class
+                  </Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -202,9 +295,9 @@ const Index = () => {
       <section id="course" className="py-20 px-4 bg-white/50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-gray-800">Why Choose Our iOS Course?</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Get the skills and knowledge you need to become a successful iOS developer
+            <h2 className="text-4xl font-bold mb-4 text-gray-800">Why Choose JustAcademy for iOS Training?</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              India's leading iOS training institute with proven track record of successful placements in top IT companies
             </p>
           </div>
           
@@ -305,16 +398,16 @@ const Index = () => {
       <section id="locations" className="py-20 px-4 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-gray-800">iOS Training Locations</h2>
-            <p className="text-xl text-gray-600">Choose your preferred training location and mode</p>
+            <h2 className="text-4xl font-bold mb-4 text-gray-800">iOS Training Centers & Course Fees</h2>
+            <p className="text-xl text-gray-600">Choose your preferred training location with transparent pricing</p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {courseOfferings.map((course, index) => (
               <Card key={index} className="hover:shadow-xl transition-all duration-300 border-blue-100 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-bl-full flex items-start justify-end p-2">
-                  <Badge className="bg-white text-blue-600 text-xs px-1 py-0">
-                    {course.mode}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-bl-full flex items-start justify-end p-2">
+                  <Badge className="bg-white text-blue-600 text-xs px-2 py-1">
+                    {course.fee}
                   </Badge>
                 </div>
                 
@@ -331,7 +424,7 @@ const Index = () => {
                     </div>
                     <div className="flex items-center gap-1">
                       <GraduationCap className="w-4 h-4" />
-                      <span>Certificate</span>
+                      <span>{course.mode}</span>
                     </div>
                   </div>
                   <CardDescription className="text-gray-700 mt-2">
@@ -364,34 +457,111 @@ const Index = () => {
                     </div>
                   </div>
                   
-                  <div className="pt-4">
+                  <div className="pt-4 space-y-2">
                     <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
-                      Enroll in {course.location}
+                      Enroll Now - {course.fee}
                     </Button>
-                    <p className="text-center text-sm text-gray-500 mt-2">
-                      Call for batch timings & fees
-                    </p>
+                    <Button variant="outline" className="w-full border-blue-200 text-blue-600 hover:bg-blue-50">
+                      Get Free Demo Class
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
-          
-          <div className="text-center mt-12">
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8 max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">Can't find your city?</h3>
-              <p className="text-gray-600 mb-6">
-                We also offer online iOS training with live instructor-led sessions. Join from anywhere in India!
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
-                  Explore Online Training
-                </Button>
-                <Button variant="outline" size="lg" className="border-blue-200 text-blue-600 hover:bg-blue-50">
-                  Contact for New Location
-                </Button>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-4 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 text-gray-800">Get In Touch</h2>
+            <p className="text-xl text-gray-600">Have questions? Our iOS training experts are here to help</p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                      <Phone className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-800">Call Us</p>
+                      <p className="text-gray-600">+91 9876543210</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                      <Mail className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-800">Email Us</p>
+                      <p className="text-gray-600">info@justacademy.co</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                      <MapPin className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-800">Visit Us</p>
+                      <p className="text-gray-600">Available in Pune, Bangalore & Hyderabad</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg border border-blue-100">
+                <h4 className="font-bold text-gray-800 mb-4">Quick Facts</h4>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• 10,000+ Students Successfully Trained</li>
+                  <li>• 95% Placement Success Rate</li>
+                  <li>• Average Salary: ₹4-8 LPA</li>
+                  <li>• 50+ Hiring Partner Companies</li>
+                  <li>• Flexible Batch Timings</li>
+                </ul>
               </div>
             </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-2xl text-gray-800">Send us a Message</CardTitle>
+                <CardDescription>Fill out the form and we'll get back to you within 24 hours</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="contact-name">Name *</Label>
+                      <Input id="contact-name" placeholder="Your name" required />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="contact-phone">Phone *</Label>
+                      <Input id="contact-phone" type="tel" placeholder="Your phone" required />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="contact-email">Email *</Label>
+                    <Input id="contact-email" type="email" placeholder="Your email" required />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="contact-subject">Subject</Label>
+                    <Input id="contact-subject" placeholder="Subject" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="contact-message">Message *</Label>
+                    <Textarea id="contact-message" placeholder="Your message" rows={5} required />
+                  </div>
+                  <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+                    Send Message
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -399,17 +569,18 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Start Your iOS Journey?</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Join thousands of students who have successfully launched their iOS development careers with our comprehensive course.
+          <h2 className="text-4xl font-bold mb-6">Ready to Start Your iOS Development Career?</h2>
+          <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
+            Join 10,000+ successful students who have launched their iOS development careers with JustAcademy. Get industry-ready skills with 100% job placement assistance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" className="text-lg px-8 py-4 bg-white text-blue-600 hover:bg-gray-100">
-              <BookOpen className="w-5 h-5 mr-2" />
+              <User className="w-5 h-5 mr-2" />
               Enroll Now
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-blue-600">
-              Download Syllabus
+              <Phone className="w-5 h-5 mr-2" />
+              Call for Free Counseling
             </Button>
           </div>
         </div>
@@ -426,35 +597,42 @@ const Index = () => {
                 </div>
                 <span className="text-xl font-bold">JustAcademy</span>
               </div>
-              <p className="text-gray-400">Empowering the next generation of iOS developers with world-class education.</p>
+              <p className="text-gray-400 mb-4">India's leading iOS training institute with 100% job placement assistance.</p>
+              <div className="text-sm text-gray-400">
+                <p>📞 +91 9876543210</p>
+                <p>✉️ info@justacademy.co</p>
+              </div>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Courses</h4>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#" className="hover:text-white transition-colors">iOS Development</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Swift Programming</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Mobile App Development</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">UI/UX Design</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Training Centers</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white transition-colors">Pune Center</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Bangalore Center</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Hyderabad Center</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Online Training</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Support</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Help Center</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Career Guidance</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Placement Support</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Student Portal</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Contact Us</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Community</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
               </ul>
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 JustAcademy. All rights reserved.</p>
+            <p>&copy; 2024 JustAcademy. All rights reserved. | Privacy Policy | Terms & Conditions</p>
           </div>
         </div>
       </footer>
