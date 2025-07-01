@@ -1,73 +1,99 @@
-# Welcome to your Lovable project
+# JustAcademy Remastered Web
 
-## Project info
+A modern, responsive web application for JustAcademy – India’s leading iOS training institute with 100% job placement assistance.
 
-**URL**: https://lovable.dev/projects/aed66546-509c-4460-a8a4-477385bef423
+---
 
-## How can I edit this code?
+## 🚀 Project Overview
 
-There are several ways of editing your application.
+JustAcademy Remastered Web is a React-based platform for promoting iOS, Swift, and mobile app development courses. It features:
 
-**Use Lovable**
+- Course details and curriculum
+- Free demo class registration
+- Contact and query forms (with MySQL backend and EmailJS support)
+- Student testimonials and placement info
+- Clean, mobile-friendly UI with Tailwind CSS & shadcn-ui
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/aed66546-509c-4460-a8a4-477385bef423) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tech Stack
 
-**Use your preferred IDE**
+- **Frontend:** React, TypeScript, Vite, Tailwind CSS, shadcn-ui
+- **Backend:** Node.js, Express (for API & MySQL integration)
+- **Database:** MySQL
+- **Email:** EmailJS (for direct email from forms)
+- **Deployment:** Netlify (frontend), Render/Railway/Heroku (backend)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 📦 Getting Started
 
-Follow these steps:
+### Prerequisites
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+- Node.js & npm
+- MySQL (if using backend)
+- [EmailJS account](https://www.emailjs.com/) (for email notifications)
+
+### Setup
+
+```bash
+# 1. Clone the repository
 git clone <YOUR_GIT_URL>
+cd just-academy-remastered-web
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# 2. Install dependencies
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# 3. Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Backend (Optional)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+If you want to store form data in MySQL:
 
-**Use GitHub Codespaces**
+1. Set up your MySQL database and tables.
+2. Configure your backend (`server.cjs`) with your DB credentials.
+3. Start the backend server:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+   ```bash
+   node server.cjs
+   ```
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 🌐 Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Frontend:** Deploy to [Netlify](https://www.netlify.com/) or [Vercel](https://vercel.com/).
+- **Backend:** Deploy to [Render](https://render.com/), [Railway](https://railway.app/), or [Heroku](https://www.heroku.com/).
+- **Update API URLs:** Make sure your frontend uses the deployed backend URL.
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/aed66546-509c-4460-a8a4-477385bef423) and click on Share -> Publish.
+## ✉️ Email Integration
 
-## Can I connect a custom domain to my Lovable project?
+- Configure [EmailJS](https://www.emailjs.com/) for instant email notifications from forms.
+- Update your EmailJS Service ID, Template ID, and Public Key in the form components.
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📄 License
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is for educational and demonstration purposes.
+
+---
+
+## 👨‍💻 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## 📞 Contact
+
+- **Website:** [justacademy.co](https://www.justacademy.co/)
+- **Email:** info@justacademy.co
+
+---
+
+*Built with ❤️ by the JustAcademy Team*
