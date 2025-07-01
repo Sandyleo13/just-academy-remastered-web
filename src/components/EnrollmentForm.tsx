@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -6,7 +5,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calendar } from "@/components/ui/calendar";
-import { useState } from "react";
+import React, { useState } from "react";
+import emailjs from '@emailjs/browser';
 
 const EnrollmentForm = () => {
   const [enrollmentForm, setEnrollmentForm] = useState({
@@ -22,10 +22,75 @@ const EnrollmentForm = () => {
   
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
 
-  const handleEnrollmentSubmit = (e: React.FormEvent) => {
+  const handleEnrollmentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Demo class registration:', enrollmentForm, selectedDate);
-    // Handle form submission
+
+    // Prepare data to send (including selectedDate)
+    const data = {
+      ...enrollmentForm,
+      demoDate: selectedDate, // you can format this if needed
+    };
+
+    try {
+      const response = await fetch("http://localhost:5000/api/enroll", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        alert("Registration successful!");
+        // Optionally reset form here
+      } else {
+        alert("Registration failed. Please try again.");
+      }
+    } catch (error) {
+      alert("An error occurred. Please try again.");
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setEnrollmentForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleQuerySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Replace with your actual EmailJS IDs
+    const SERVICE_ID = 'service_7fdd6ha';
+    const TEMPLATE_ID = 'template_jpugaan';
+    const PUBLIC_KEY = 'mVMRe6ue0z_B5je6mS';
+
+    try {
+      const result = await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name: enrollmentForm.name,
+          email: enrollmentForm.email,
+          phone: enrollmentForm.phone,
+          course: enrollmentForm.course,
+          location: enrollmentForm.location,
+          experience: enrollmentForm.experience,
+          query: enrollmentForm.message,
+        },
+        PUBLIC_KEY
+      );
+      alert("Query submitted and email sent!");
+      setEnrollmentForm({
+        name: '',
+        email: '',
+        phone: '',
+        experience: '',
+        course: 'iOS Development',
+        location: '',
+        mode: 'online',
+        message: ''
+      });
+    } catch (error) {
+      alert("Failed to send email.");
+    }
   };
 
   const onlineFee = 29750;
@@ -48,10 +113,11 @@ const EnrollmentForm = () => {
                     <Label htmlFor="name">Full Name *</Label>
                     <Input
                       id="name"
+                      name="name"
                       type="text"
                       placeholder="Enter your full name"
                       value={enrollmentForm.name}
-                      onChange={(e) => setEnrollmentForm({...enrollmentForm, name: e.target.value})}
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -60,10 +126,11 @@ const EnrollmentForm = () => {
                     <Label htmlFor="email">Email Address *</Label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       placeholder="Enter your email address"
                       value={enrollmentForm.email}
-                      onChange={(e) => setEnrollmentForm({...enrollmentForm, email: e.target.value})}
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -72,10 +139,11 @@ const EnrollmentForm = () => {
                     <Label htmlFor="phone">Phone Number *</Label>
                     <Input
                       id="phone"
+                      name="phone"
                       type="tel"
                       placeholder="Enter your phone number"
                       value={enrollmentForm.phone}
-                      onChange={(e) => setEnrollmentForm({...enrollmentForm, phone: e.target.value})}
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -136,9 +204,10 @@ const EnrollmentForm = () => {
                     <Label htmlFor="message">Additional Comments</Label>
                     <Textarea
                       id="message"
+                      name="message"
                       placeholder="Any specific questions or requirements?"
                       value={enrollmentForm.message}
-                      onChange={(e) => setEnrollmentForm({...enrollmentForm, message: e.target.value})}
+                      onChange={handleChange}
                       rows={3}
                     />
                   </div>

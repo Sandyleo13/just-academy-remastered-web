@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -20,10 +19,31 @@ const QueryForm = () => {
     query: ''
   });
 
-  const handleQuerySubmit = (e: React.FormEvent) => {
+  const handleQuerySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Query form submitted:', queryForm);
-    // Handle form submission
+    try {
+      const response = await fetch("http://localhost:5000/api/query", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(queryForm),
+      });
+      if (response.ok) {
+        alert("Query submitted!");
+        setQueryForm({
+          name: '',
+          email: '',
+          phone: '',
+          course: 'iOS Development',
+          location: '',
+          experience: '',
+          query: ''
+        });
+      } else {
+        alert("Failed to submit query.");
+      }
+    } catch {
+      alert("An error occurred. Please try again.");
+    }
   };
 
   return (

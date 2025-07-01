@@ -5,7 +5,6 @@ import EnrollmentForm from "@/components/EnrollmentForm";
 import FeaturesSection from "@/components/FeaturesSection";
 import CurriculumSection from "@/components/CurriculumSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import CourseOfferingsSection from "@/components/CourseOfferingsSection";
 import ContactSection from "@/components/ContactSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
@@ -19,7 +18,6 @@ const Index = () => {
       <FeaturesSection />
       <CurriculumSection />
       <TestimonialsSection />
-      <CourseOfferingsSection />
       <ContactSection />
       <CTASection />
       <Footer />

@@ -19,7 +19,6 @@ const Header = () => {
           <a href="#course" className="text-gray-700 hover:text-blue-600 transition-colors">Course</a>
           <a href="#curriculum" className="text-gray-700 hover:text-blue-600 transition-colors">Curriculum</a>
           <a href="#testimonials" className="text-gray-700 hover:text-blue-600 transition-colors">Reviews</a>
-          <a href="#locations" className="text-gray-700 hover:text-blue-600 transition-colors">Locations</a>
           <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
         </nav>
         <QueryForm />

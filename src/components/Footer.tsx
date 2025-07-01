@@ -1,11 +1,10 @@
-
 import { Smartphone } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-12 px-4">
       <div className="container mx-auto">
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-3 gap-6 justify-between">
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
@@ -22,28 +21,19 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Courses</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">iOS Development</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Swift Programming</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Mobile App Development</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">UI/UX Design</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-4">Training Centers</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">Pune Center</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Bangalore Center</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Hyderabad Center</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Online Training</a></li>
+              <li><a href="https://www.justacademy.co/course-detail/ios-training" className="hover:text-white transition-colors">iOS Development</a></li>
+              <li><a href="https://www.justacademy.co/course-detail/ios-training" className="hover:text-white transition-colors">Swift Programming</a></li>
+              <li><a href="https://www.justacademy.co/course-detail/android-app-development" className="hover:text-white transition-colors">Mobile App Development</a></li>
+              <li><a href="https://www.justacademy.co/course-detail/figma-training" className="hover:text-white transition-colors">UI/UX Design</a></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold mb-4">Support</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">Career Guidance</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Placement Support</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Student Portal</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contact Us</a></li>
+              <li><a href="https://www.justacademy.co/" className="hover:text-white transition-colors">Career Guidance</a></li>
+              <li><a href="https://www.justacademy.co/student-placed" className="hover:text-white transition-colors">Placement Support</a></li>
+              <li><a href="https://www.justacademy.co/success" className="hover:text-white transition-colors">Student Portal</a></li>
+              <li><a href="https://www.justacademy.co/register-for-course-demo" className="hover:text-white transition-colors">Contact Us</a></li>
             </ul>
           </div>
         </div>

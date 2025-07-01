@@ -1,4 +1,4 @@
-
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -7,6 +7,40 @@ import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 const ContactSection = () => {
+  // 1. Add state for form fields
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+
+  // 2. Handle input changes
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  // 3. Handle form submit
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form)
+      });
+      if (response.ok) {
+        alert("Message sent!");
+        setForm({ name: "", phone: "", email: "", subject: "", message: "" });
+      } else {
+        alert("Failed to send message.");
+      }
+    } catch {
+      alert("An error occurred. Please try again.");
+    }
+  };
+
   return (
     <section id="contact" className="py-20 px-4 bg-gradient-to-r from-blue-50 to-indigo-50">
       <div className="container mx-auto">
@@ -68,28 +102,65 @@ const ContactSection = () => {
               <CardDescription>Fill out the form and we'll get back to you within 24 hours</CardDescription>
             </CardHeader>
             <CardContent>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="contact-name">Name *</Label>
-                    <Input id="contact-name" placeholder="Your name" required />
+                    <Input
+                      id="contact-name"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      placeholder="Your name"
+                      required
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="contact-phone">Phone *</Label>
-                    <Input id="contact-phone" type="tel" placeholder="Your phone" required />
+                    <Input
+                      id="contact-phone"
+                      name="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      type="tel"
+                      placeholder="Your phone"
+                      required
+                    />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="contact-email">Email *</Label>
-                  <Input id="contact-email" type="email" placeholder="Your email" required />
+                  <Input
+                    id="contact-email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    type="email"
+                    placeholder="Your email"
+                    required
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="contact-subject">Subject</Label>
-                  <Input id="contact-subject" placeholder="Subject" />
+                  <Input
+                    id="contact-subject"
+                    name="subject"
+                    value={form.subject}
+                    onChange={handleChange}
+                    placeholder="Subject"
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="contact-message">Message *</Label>
-                  <Textarea id="contact-message" placeholder="Your message" rows={5} required />
+                  <Textarea
+                    id="contact-message"
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="Your message"
+                    rows={5}
+                    required
+                  />
                 </div>
                 <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
                   Send Message
