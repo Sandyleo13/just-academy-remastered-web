@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Smartphone, Phone } from "lucide-react";
+import QueryForm from "./QueryForm";
 
 const Header = () => {
   return (
@@ -21,10 +22,7 @@ const Header = () => {
           <a href="#locations" className="text-gray-700 hover:text-blue-600 transition-colors">Locations</a>
           <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
         </nav>
-        <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
-          <Phone className="w-4 h-4 mr-2" />
-          Call Now
-        </Button>
+        <QueryForm />
       </div>
     </header>
   );

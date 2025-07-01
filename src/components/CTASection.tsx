@@ -1,6 +1,8 @@
 
 import { Button } from "@/components/ui/button";
 import { User, Phone } from "lucide-react";
+import EnrollmentDialog from "./EnrollmentDialog";
+import QueryForm from "./QueryForm";
 
 const CTASection = () => {
   return (
@@ -11,14 +13,21 @@ const CTASection = () => {
           Join 10,000+ successful students who have launched their iOS development careers with JustAcademy. Get industry-ready skills with 100% job placement assistance.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" variant="secondary" className="text-lg px-8 py-4 bg-white text-blue-600 hover:bg-gray-100">
-            <User className="w-5 h-5 mr-2" />
-            Enroll Now
-          </Button>
-          <Button size="lg" variant="outline" className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-blue-600">
-            <Phone className="w-5 h-5 mr-2" />
-            Call for Free Counseling
-          </Button>
+          <EnrollmentDialog mode="online" fee={29750}>
+            <Button size="lg" variant="secondary" className="text-lg px-8 py-4 bg-white text-blue-600 hover:bg-gray-100">
+              <User className="w-5 h-5 mr-2" />
+              Enroll Now - Online (₹29,750)
+            </Button>
+          </EnrollmentDialog>
+          <EnrollmentDialog mode="classroom" fee={35000}>
+            <Button size="lg" variant="outline" className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-blue-600">
+              <User className="w-5 h-5 mr-2" />
+              Enroll Now - Classroom (₹35,000)
+            </Button>
+          </EnrollmentDialog>
+        </div>
+        <div className="mt-6">
+          <QueryForm />
         </div>
       </div>
     </section>
